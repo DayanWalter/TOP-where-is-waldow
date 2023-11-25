@@ -1,13 +1,18 @@
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import styles from './Root.module.css';
 
 export default function Root() {
   return (
     <div className={styles.site}>
       <header className={styles.header}>
-        <button>Restart</button>
+        <Link to={`/`}>
+          <button>Restart</button>
+        </Link>
+
         <h1>PixelMania</h1>
-        <button>Leaderboard</button>
+        <Link to={`/leaderboard`}>
+          <button>Leaderboard</button>
+        </Link>
       </header>
       <main className={styles.main}>
         <Outlet />
