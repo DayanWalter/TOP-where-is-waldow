@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 .site {
+  font-family: 'Montserrat', sans-serif;
   /* background-color: rgb(184, 184, 255); */
   height: 100vh;
   display: grid;

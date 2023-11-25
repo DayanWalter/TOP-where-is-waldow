@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
 
 export default function Home() {
@@ -20,7 +21,10 @@ export default function Home() {
               </li>
             </ul>
             <p>Have fun, traveler!</p>
-            <button>START</button>
+
+            <Link to={`/picture`}>
+              <button>START</button>
+            </Link>
           </div>
         </div>
       </div>
