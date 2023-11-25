@@ -1,6 +1,26 @@
 .site {
-  background-color: blue;
-  height: 100vh;
+  background-color: rgb(184, 184, 255);
+  height: 100%;
   display: grid;
   grid-template-rows: 100px 1fr 50px;
+}
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.header button {
+  color: black;
+  background-color: white;
+  outline: none;
+  border: 1px solid black;
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
