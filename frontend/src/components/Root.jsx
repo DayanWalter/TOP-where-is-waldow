@@ -8,7 +8,6 @@ export default function Root() {
       <header className={styles.header}>Root styles.header</header>
       <main className={styles.main}>
         <Outlet />
-        Root styles.main
       </main>
       <footer className={styles.footer}>Root styles.footer</footer>
     </div>
