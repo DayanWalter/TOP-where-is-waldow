@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import Root from './components/Root';
 import Home from './components/Home';
+import Picture from './components/Picture';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,15 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+      {
+        element: <Picture />,
+        path: '/picture',
+      },
+      //Todo:
+      // {
+      //   element: <Leaderboard />,
+      //   path: '/leaderboard',
+      // },
     ],
   },
 ]);
