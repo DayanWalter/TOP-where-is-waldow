@@ -25,17 +25,21 @@ export default function Picture() {
     const boundingBox = picture.getBoundingClientRect();
 
     // Keep the popup on the site
+    const leftSide = event.clientX - boundingBox.left;
+    const topSide = event.clientY - boundingBox.top;
+
     let rawX, rawY;
-    if (event.clientX - boundingBox.left + 200 > boundingBox.width) {
-      rawX = event.clientX - boundingBox.left - 200;
+
+    if (leftSide + 200 > boundingBox.width) {
+      rawX = leftSide - 200;
     } else {
-      rawX = event.clientX - boundingBox.left;
+      rawX = leftSide;
     }
 
-    if (event.clientY - boundingBox.top + 200 > boundingBox.height) {
-      rawY = event.clientY - boundingBox.top - 200;
+    if (topSide + 200 > boundingBox.height) {
+      rawY = topSide - 200;
     } else {
-      rawY = event.clientY - boundingBox.top;
+      rawY = topSide;
     }
 
     setRawCoords({ x: rawX, y: rawY });
