@@ -1,3 +1,7 @@
+import rick from '../assets/statueofrick.png';
+import morty from '../assets/morty.png';
+import girl from '../assets/littlegirl.png';
+
 import styles from './Popup.module.css';
 
 export default function Popup({ coords }) {
@@ -11,10 +15,17 @@ export default function Popup({ coords }) {
         <div className={styles.innerbox}>
           <div className={styles.innerboxcontent}>
             <ul>
-              {/* Map through every entry */}
-              <li>Char 1</li>
-              <li>Char 2</li>
-              <li>Char 3</li>
+              <li className={styles.listitem}>
+                <img className={styles.chars} src={rick} alt="statue of rick" />
+              </li>
+
+              <li className={styles.listitem}>
+                <img className={styles.chars} src={morty} alt="morty" />
+              </li>
+
+              <li className={styles.listitem}>
+                <img className={styles.chars} src={girl} alt="little girl" />
+              </li>
             </ul>
           </div>
         </div>

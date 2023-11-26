@@ -39,8 +39,8 @@ export default function Picture() {
       rawX = leftSide;
     }
 
-    if (topSide + 200 > boundingBox.height) {
-      rawY = topSide - 200;
+    if (topSide + 405 > boundingBox.height) {
+      rawY = topSide - 405;
     } else {
       rawY = topSide;
     }

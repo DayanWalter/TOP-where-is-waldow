@@ -2,6 +2,7 @@ import styles from './Leaderboard.module.css';
 
 export default function Leaderboard() {
   // Offline Example-Leaderboard
+  // Fetch data from server
   const leaderboard = [
     { id: 1, name: 'Jeff', time: 12.6 },
     { id: 2, name: 'Dave', time: 13.75 },
@@ -17,7 +18,8 @@ export default function Leaderboard() {
             <ol>
               {leaderboard.map(({ id, name, time }) => (
                 <li key={id}>
-                  {/* Insert component */} {name} in {time} seconds
+                  {/* Map through every entry: Insert component */}
+                  {name} in {time} seconds
                 </li>
               ))}
             </ol>

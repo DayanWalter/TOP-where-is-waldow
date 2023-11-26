@@ -7,8 +7,8 @@
   border: 1px solid black;
   border-radius: 25px;
   padding: 15px;
-  width: 200px;
-  height: 200px;
+  min-width: 200px;
+  min-height: 200px;
 }
 .innerbox {
   background-color: rgba(255, 255, 255, 0.75);
@@ -25,6 +25,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 15px;
 }
 .innerboxcontent h1,
 .innerboxcontent p {
@@ -48,4 +49,14 @@
   background-color: black;
   /* transform: scale(5); */
   transform: rotate(720deg);
+}
+.chars {
+  border-radius: 50%;
+}
+.listitem {
+  list-style-type: none;
+  cursor: pointer;
+}
+.listitem:nth-child(2) {
+  margin: 15px 0px;
 }
