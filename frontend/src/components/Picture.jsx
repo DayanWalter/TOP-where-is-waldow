@@ -13,8 +13,10 @@ export default function Picture() {
   const normalizeCoords = (x, y, boundingBox) => {
     const imageWidth = boundingBox.width;
     const imageHeight = boundingBox.height;
+
     const normalizeX = (x / imageWidth) * 100;
     const normalizeY = (y / imageHeight) * 100;
+
     return { x: normalizeX, y: normalizeY };
   };
 
@@ -22,8 +24,20 @@ export default function Picture() {
     const picture = event.currentTarget;
     const boundingBox = picture.getBoundingClientRect();
 
-    const rawX = event.clientX - boundingBox.left;
-    const rawY = event.clientY - boundingBox.top;
+    // Keep the popup on the site
+    let rawX, rawY;
+    if (event.clientX - boundingBox.left + 200 > boundingBox.width) {
+      rawX = event.clientX - boundingBox.left - 200;
+    } else {
+      rawX = event.clientX - boundingBox.left;
+    }
+
+    if (event.clientY - boundingBox.top + 200 > boundingBox.height) {
+      rawY = event.clientY - boundingBox.top - 200;
+    } else {
+      rawY = event.clientY - boundingBox.top;
+    }
+
     setRawCoords({ x: rawX, y: rawY });
 
     const normalizedCoords = normalizeCoords(rawX, rawY, boundingBox);

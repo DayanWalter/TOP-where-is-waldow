@@ -10,7 +10,6 @@ export default function Popup(coords) {
       <div className={styles.outerbox}>
         <div className={styles.innerbox}>
           <div className={styles.innerboxcontent}>
-            <h1>Popup</h1>
             <ul>
               <li>Char 1</li>
               <li>Char 2</li>
