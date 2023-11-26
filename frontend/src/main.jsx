@@ -20,7 +20,6 @@ const router = createBrowserRouter([
         element: <Picture />,
         path: '/picture',
       },
-      //Todo:
       {
         element: <Leaderboard />,
         path: '/leaderboard',

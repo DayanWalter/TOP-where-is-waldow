@@ -1,6 +1,7 @@
 import styles from './Leaderboard.module.css';
 
 export default function Leaderboard() {
+  // Offline Example-Leaderboard
   const leaderboard = [
     { id: 1, name: 'Jeff', time: 12.6 },
     { id: 2, name: 'Dave', time: 13.75 },
