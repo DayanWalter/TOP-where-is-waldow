@@ -5,6 +5,7 @@ import './index.css';
 import Root from './components/Root';
 import Home from './components/Home';
 import Picture from './components/Picture';
+import Leaderboard from './components/Leaderboard';
 
 const router = createBrowserRouter([
   {
@@ -20,10 +21,10 @@ const router = createBrowserRouter([
         path: '/picture',
       },
       //Todo:
-      // {
-      //   element: <Leaderboard />,
-      //   path: '/leaderboard',
-      // },
+      {
+        element: <Leaderboard />,
+        path: '/leaderboard',
+      },
     ],
   },
 ]);
