@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import picture from '../assets/ricknmorty.jpg';
 import styles from './Picture.module.css';
+import Popup from './Popup';
 
 export default function Picture() {
   const [coords, setCoords] = useState({ x: null, y: null });
+
+  const [rawCoords, setRawCoords] = useState({ x: null, y: null });
+
+  const [popup, setPopup] = useState(false);
 
   const normalizeCoords = (x, y, boundingBox) => {
     const imageWidth = boundingBox.width;
@@ -19,19 +24,26 @@ export default function Picture() {
 
     const rawX = event.clientX - boundingBox.left;
     const rawY = event.clientY - boundingBox.top;
+    setRawCoords({ x: rawX, y: rawY });
+
     const normalizedCoords = normalizeCoords(rawX, rawY, boundingBox);
     const { x, y } = normalizedCoords;
+
     setCoords({ x, y });
+    setPopup(true);
   };
 
   return (
     <>
-      <img
-        src={picture}
-        alt="PixelPicture"
-        className={styles.img}
-        onClick={handleClick}
-      />
+      <div className={styles.container}>
+        <img
+          src={picture}
+          alt="PixelPicture"
+          className={styles.img}
+          onClick={handleClick}
+        />
+        {popup && <Popup coords={rawCoords} />}
+      </div>
     </>
   );
 }
