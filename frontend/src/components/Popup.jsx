@@ -1,9 +1,9 @@
 import styles from './Popup.module.css';
 
-export default function Popup(coords) {
+export default function Popup({ coords }) {
   const position = {
-    left: coords.coords.x,
-    top: coords.coords.y,
+    left: coords.x,
+    top: coords.y,
   };
   return (
     <div className={styles.container} style={position}>
@@ -11,6 +11,7 @@ export default function Popup(coords) {
         <div className={styles.innerbox}>
           <div className={styles.innerboxcontent}>
             <ul>
+              {/* Map through every entry */}
               <li>Char 1</li>
               <li>Char 2</li>
               <li>Char 3</li>
