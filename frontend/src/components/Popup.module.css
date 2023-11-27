@@ -42,12 +42,12 @@
   border-radius: 15px;
   outline: none;
   cursor: pointer;
-  transition: all 0.5s;
+  transition: all 0.25s;
 }
 .innerboxcontent button:hover {
   background-color: black;
   /* transform: scale(5); */
-  transform: rotate(720deg);
+  transform: scale(1.2);
 }
 .chars {
   border-radius: 50%;

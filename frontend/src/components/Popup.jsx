@@ -1,6 +1,10 @@
-import rick from '../assets/statueofrick.png';
-import morty from '../assets/morty.png';
-import girl from '../assets/littlegirl.png';
+import rick from '../assets/statueofrickstart.png';
+import morty from '../assets/mortystart.png';
+import girl from '../assets/littlegirlstart.png';
+
+import rickdone from '../assets/statueofrick.png';
+import mortydone from '../assets/morty.png';
+import girldone from '../assets/littlegirl.png';
 
 import styles from './Popup.module.css';
 import { useState } from 'react';
@@ -13,15 +17,6 @@ export default function Popup({ popupCoords, coords }) {
   });
 
   const handleSubmit = async (selectedValue) => {
-    // Name of the button/char
-    // console.log(selectedValue);
-
-    // // Position clicked
-    // console.log(coords);
-
-    // Clicked x value
-    // console.log(coords.x);
-
     try {
       const response = await fetch(
         `http://localhost:3000/chars/${selectedValue}`,
@@ -42,17 +37,10 @@ export default function Popup({ popupCoords, coords }) {
       }
       const json = await response.json();
 
-      // if (
-      //   coords.x >= +json.allChars[0].xCoords - 2.5 &&
-      //   coords.x <= +json.allChars[0].xCoords + 2.5 &&
-      //   coords.y >= +json.allChars[0].yCoords - 2.5 &&
-      //   coords.y <= +json.allChars[0].yCoords + 2.5
-      // ) {
-      //   console.log('Success');
-      // }
-      //xCoords of rick
       console.log(json);
+      // If the response is a success
       if (json.message === 'Success') {
+        // Set the found char to true
         setFoundChars({
           ...foundChars,
           [json.char.name]: true,
@@ -84,11 +72,11 @@ export default function Popup({ popupCoords, coords }) {
                       handleSubmit('rick');
                     }}
                   >
-                    <img
-                      className={styles.chars}
-                      src={rick}
-                      alt="statue of rick"
-                    />
+                    {!foundChars.rick ? (
+                      <img className={styles.chars} src={rick} alt="rick" />
+                    ) : (
+                      <img className={styles.chars} src={rickdone} alt="rick" />
+                    )}
                   </button>
                 </li>
 
@@ -100,7 +88,15 @@ export default function Popup({ popupCoords, coords }) {
                       handleSubmit('morty');
                     }}
                   >
-                    <img className={styles.chars} src={morty} alt="morty" />
+                    {!foundChars.morty ? (
+                      <img className={styles.chars} src={morty} alt="morty" />
+                    ) : (
+                      <img
+                        className={styles.chars}
+                        src={mortydone}
+                        alt="morty"
+                      />
+                    )}
                   </button>
                 </li>
 
@@ -112,11 +108,11 @@ export default function Popup({ popupCoords, coords }) {
                       handleSubmit('girl');
                     }}
                   >
-                    <img
-                      className={styles.chars}
-                      src={girl}
-                      alt="little girl"
-                    />
+                    {!foundChars.girl ? (
+                      <img className={styles.chars} src={girl} alt="girl" />
+                    ) : (
+                      <img className={styles.chars} src={girldone} alt="girl" />
+                    )}
                   </button>
                 </li>
               </ul>
