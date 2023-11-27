@@ -50,7 +50,7 @@ export default function Picture() {
     // Normalize  coords for database
     const normalizedCoords = normalizeCoords(leftSide, topSide, boundingBox);
     const { x, y } = normalizedCoords;
-    console.log(`X: ${x} Y: ${y}`);
+    // console.log(`X: ${x} Y: ${y}`);
 
     // Set coords for database
     setCoords({ x, y });
@@ -68,7 +68,7 @@ export default function Picture() {
           className={styles.img}
           onClick={handleClick}
         />
-        {showPopup && <Popup coords={popupCoords} />}
+        {showPopup && <Popup popupCoords={popupCoords} coords={coords} />}
       </div>
     </>
   );

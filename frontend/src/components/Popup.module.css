@@ -36,16 +36,15 @@
 .innerboxcontent button {
   color: black;
   background-color: white;
-  outline: none;
   border: 1px solid black;
   font-size: 24px;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 15px;
+  outline: none;
   cursor: pointer;
   transition: all 0.5s;
 }
 .innerboxcontent button:hover {
-  color: white;
   background-color: black;
   /* transform: scale(5); */
   transform: rotate(720deg);
