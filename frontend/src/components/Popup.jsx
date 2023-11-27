@@ -3,8 +3,15 @@ import morty from '../assets/morty.png';
 import girl from '../assets/littlegirl.png';
 
 import styles from './Popup.module.css';
+import { useState } from 'react';
 
 export default function Popup({ popupCoords, coords }) {
+  const [foundChars, setFoundChars] = useState({
+    rick: false,
+    morty: false,
+    girl: false,
+  });
+
   const handleSubmit = async (selectedValue) => {
     // Name of the button/char
     // console.log(selectedValue);
@@ -45,6 +52,13 @@ export default function Popup({ popupCoords, coords }) {
       // }
       //xCoords of rick
       console.log(json);
+      if (json.message === 'Success') {
+        setFoundChars({
+          ...foundChars,
+          [json.char.name]: true,
+        });
+      }
+      console.log(foundChars);
     } catch (error) {
       console.error('Error', error);
     }

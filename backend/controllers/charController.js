@@ -16,8 +16,6 @@ exports.char_post = asyncHandler(async (req, res, next) => {
     req.body.y >= +char.yCoords - 2.5 &&
     req.body.y <= +char.yCoords + 2.5
   ) {
-    console.log('Success');
-    console.log(req.body);
     res.json({ char, message: 'Success' });
   } else {
     res.json({ message: 'failure' });
