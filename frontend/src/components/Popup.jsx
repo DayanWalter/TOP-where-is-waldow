@@ -7,33 +7,44 @@ import styles from './Popup.module.css';
 export default function Popup({ popupCoords, coords }) {
   const handleSubmit = async (selectedValue) => {
     // Name of the button/char
-    console.log(selectedValue);
+    // console.log(selectedValue);
 
     // // Position clicked
     // console.log(coords);
 
     // Clicked x value
-    console.log(coords.x);
+    // console.log(coords.x);
 
     try {
-      const response = await fetch('http://localhost:3000/chars', {
-        method: 'GET',
-      });
+      const response = await fetch(
+        `http://localhost:3000/chars/${selectedValue}`,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            name: `${selectedValue}`,
+            x: coords.x,
+            y: coords.y,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       if (!response.ok) {
         console.error('Error:', response.statusText);
       }
       const json = await response.json();
 
-      if (
-        coords.x >= +json.allChars[0].xCoords - 2.5 &&
-        coords.x <= +json.allChars[0].xCoords + 2.5 &&
-        coords.y >= +json.allChars[0].yCoords - 2.5 &&
-        coords.y <= +json.allChars[0].yCoords + 2.5
-      ) {
-        console.log('Success');
-      }
+      // if (
+      //   coords.x >= +json.allChars[0].xCoords - 2.5 &&
+      //   coords.x <= +json.allChars[0].xCoords + 2.5 &&
+      //   coords.y >= +json.allChars[0].yCoords - 2.5 &&
+      //   coords.y <= +json.allChars[0].yCoords + 2.5
+      // ) {
+      //   console.log('Success');
+      // }
       //xCoords of rick
-      console.log(+json.allChars[0].xCoords);
+      console.log(json);
     } catch (error) {
       console.error('Error', error);
     }

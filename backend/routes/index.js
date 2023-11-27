@@ -8,6 +8,8 @@ router.get('/', function (req, res, next) {
 
 // Get Chars //
 // Rick
-router.get('/chars', char_controller.char_get);
+router.get('/chars/:id', char_controller.char_get);
+
+router.post('/chars/:id', char_controller.char_post);
 
 module.exports = router;
