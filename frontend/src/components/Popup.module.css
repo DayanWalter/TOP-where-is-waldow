@@ -1,6 +1,7 @@
 .container {
   /* background-color: green; */
   position: absolute;
+  /* position: sticky; */
 }
 .outerbox {
   background-color: rgba(245, 245, 245, 0.5);

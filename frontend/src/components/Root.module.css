@@ -3,7 +3,7 @@
 .site {
   font-family: 'Montserrat', sans-serif;
   /* background-color: rgb(184, 184, 255); */
-  height: 100vh;
+  height: 100%;
   display: grid;
   grid-template-rows: 100px 1fr 50px;
 }
@@ -12,6 +12,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 500;
 }
 .header button {
   color: black;
