@@ -27,29 +27,30 @@ export default function Picture() {
     const picture = event.currentTarget;
     const boundingBox = picture.getBoundingClientRect();
 
-    // Keep the popup on the site
+    // Where are we on the picture?
     const leftSide = event.clientX - boundingBox.left;
     const topSide = event.clientY - boundingBox.top;
 
     // Check if the popup is on the image
-    let rawX, rawY;
+    let popupX, popupY;
     if (leftSide + 200 > boundingBox.width) {
-      rawX = leftSide - 200;
+      popupX = leftSide - 200;
     } else {
-      rawX = leftSide;
+      popupX = leftSide;
     }
 
     if (topSide + 405 > boundingBox.height) {
-      rawY = topSide - 405;
+      popupY = topSide - 405;
     } else {
-      rawY = topSide;
+      popupY = topSide;
     }
 
-    setPopupCoords({ x: rawX, y: rawY });
+    setPopupCoords({ x: popupX, y: popupY });
 
     // Normalize  coords for database
-    const normalizedCoords = normalizeCoords(rawX, rawY, boundingBox);
+    const normalizedCoords = normalizeCoords(leftSide, topSide, boundingBox);
     const { x, y } = normalizedCoords;
+    console.log(`X: ${x} Y: ${y}`);
 
     // Set coords for database
     setCoords({ x, y });

@@ -1,5 +1,7 @@
 const Char = require('../models/chars');
+const asyncHandler = require('express-async-handler');
 
-exports.char_get = (req, res) => {
-  res.json({ name: 'Rick', xCoords: 12.5, yChoords: 13.4 });
-};
+exports.char_get = asyncHandler(async (req, res, next) => {
+  const allChars = await Char.find().exec();
+  res.json({ allChars });
+});
