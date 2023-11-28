@@ -17,6 +17,7 @@ export default function Popup({ popupCoords, coords }) {
   });
 
   const handleSubmit = async (selectedValue) => {
+    // POST the position and the name of the selectedCharacter(selectedValue)
     try {
       const response = await fetch(
         `http://localhost:3000/chars/${selectedValue}`,
@@ -42,10 +43,13 @@ export default function Popup({ popupCoords, coords }) {
       if (json.message === 'Success') {
         // Set the found char to true
         setFoundChars({
+          // Keep the found chars
           ...foundChars,
+          // Set the recently found char to true
           [json.char.name]: true,
         });
       }
+      // DIsplay the found chars
       console.log(foundChars);
     } catch (error) {
       console.error('Error', error);
@@ -72,6 +76,7 @@ export default function Popup({ popupCoords, coords }) {
                       handleSubmit('rick');
                     }}
                   >
+                    {/* Change the colour of the picture */}
                     {!foundChars.rick ? (
                       <img className={styles.chars} src={rick} alt="rick" />
                     ) : (
@@ -88,6 +93,7 @@ export default function Popup({ popupCoords, coords }) {
                       handleSubmit('morty');
                     }}
                   >
+                    {/* Change the colour of the picture */}
                     {!foundChars.morty ? (
                       <img className={styles.chars} src={morty} alt="morty" />
                     ) : (
@@ -108,6 +114,7 @@ export default function Popup({ popupCoords, coords }) {
                       handleSubmit('girl');
                     }}
                   >
+                    {/* Change the colour of the picture */}
                     {!foundChars.girl ? (
                       <img className={styles.chars} src={girl} alt="girl" />
                     ) : (
