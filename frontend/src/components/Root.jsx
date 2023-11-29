@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import styles from './Root.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import rick from '../assets/statueofrickstart.png';
 import morty from '../assets/mortystart.png';
@@ -11,19 +11,36 @@ import mortydone from '../assets/morty.png';
 import girldone from '../assets/littlegirl.png';
 
 export default function Root() {
+  const [time, setTime] = useState({
+    start: null,
+    end: null,
+    elapsed: null,
+    user: null,
+  });
+
   const [foundChars, setFoundChars] = useState({
     rick: false,
     morty: false,
     girl: false,
   });
 
-  if (
-    foundChars.rick === true &&
-    foundChars.girl === true &&
-    foundChars.morty === true
-  ) {
-    console.log('All done!');
-  }
+  // Set end time after every char is found
+  useEffect(() => {
+    if (
+      foundChars.rick === true &&
+      foundChars.girl === true &&
+      foundChars.morty === true
+    ) {
+      console.log('All done! STOP TIME');
+
+      setTime({
+        ...time,
+        end: Date.now(),
+      });
+    }
+  }, [foundChars.rick, foundChars.girl, foundChars.morty]);
+
+  console.log(time);
   return (
     <div className={styles.site}>
       <header className={styles.header}>
@@ -55,7 +72,7 @@ export default function Root() {
         </Link>
       </header>
       <main className={styles.main}>
-        <Outlet context={[foundChars, setFoundChars]} />
+        <Outlet context={[foundChars, setFoundChars, time, setTime]} />
       </main>
       <footer className={styles.footer}>
         <h2> Synth©yrax</h2>

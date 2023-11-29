@@ -11,8 +11,7 @@ import { useOutletContext } from 'react-router-dom';
 
 export default function Popup({ popupCoords, coords }) {
   // State from root
-  const [foundChars, setFoundChars] = useOutletContext();
-
+  const [foundChars, setFoundChars, time, setTime] = useOutletContext();
   const handleSubmit = async (selectedValue) => {
     // POST the position and the name of the selectedCharacter(selectedValue)
     try {

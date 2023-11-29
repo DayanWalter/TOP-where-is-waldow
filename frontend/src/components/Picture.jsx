@@ -2,33 +2,38 @@ import { useEffect, useState } from 'react';
 import picture from '../assets/ricknmorty.jpg';
 import styles from './Picture.module.css';
 import Popup from './Popup';
+import { useOutletContext } from 'react-router-dom';
 
 export default function Picture() {
+  const [foundChars, setFoundChars, time, setTime] = useOutletContext();
+  // Fetch Time from server after entering site(pressing START)
   useEffect(() => {
-    const fetchTime = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/picture`, {
-          method: 'POST',
-          body: JSON.stringify({
-            time: Date.now(),
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (!response.ok) {
-          console.error('Error:', response.statusText);
-        }
-        const json = await response.json();
-
-        console.log(json);
-      } catch (error) {
-        console.error('Error', error);
-      }
-      console.log('fetchTime executed');
-    };
-    fetchTime();
+    setTime({
+      ...time,
+      start: Date.now(),
+    });
+    // const fetchTime = async () => {
+    //   try {
+    //     const response = await fetch(`http://localhost:3000/picture`, {
+    //       method: 'POST',
+    //       body: JSON.stringify({
+    //         time: Date.now(),
+    //       }),
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //     });
+    //     if (!response.ok) {
+    //       console.error('Error:', response.statusText);
+    //     }
+    //     const json = await response.json();
+    //     console.log(json);
+    //   } catch (error) {
+    //     console.error('Error', error);
+    //   }
+    //   console.log('fetchTime executed');
+    // };
+    // fetchTime();
   }, []);
 
   const [coords, setCoords] = useState({ x: null, y: null });
