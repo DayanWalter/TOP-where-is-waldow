@@ -6,10 +6,10 @@ router.get('/', function (req, res, next) {
   res.json({ start: 'This is the start' });
 });
 
-// Get Chars //
-// Rick
 router.get('/chars/:id', char_controller.char_get);
 
 router.post('/chars/:id', char_controller.char_post);
+
+router.post('/picture', char_controller.time_post);
 
 module.exports = router;

@@ -8,6 +8,8 @@ export default function Leaderboard() {
     { id: 2, name: 'Dave', time: 13.75 },
     { id: 3, name: 'Michael', time: 26.45 },
   ];
+  console.log('leaderboard');
+
   return (
     <div className={styles.container}>
       <div className={styles.outerbox}>

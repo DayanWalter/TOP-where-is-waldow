@@ -21,3 +21,7 @@ exports.char_post = asyncHandler(async (req, res, next) => {
     res.json({ message: 'failure' });
   }
 });
+exports.time_post = asyncHandler(async (req, res, next) => {
+  console.log(req.body.time);
+  res.json({ timer: req.body.time });
+});

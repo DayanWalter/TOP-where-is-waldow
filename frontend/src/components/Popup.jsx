@@ -7,14 +7,11 @@ import mortydone from '../assets/morty.png';
 import girldone from '../assets/littlegirl.png';
 
 import styles from './Popup.module.css';
-import { useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 export default function Popup({ popupCoords, coords }) {
-  const [foundChars, setFoundChars] = useState({
-    rick: false,
-    morty: false,
-    girl: false,
-  });
+  // State from root
+  const [foundChars, setFoundChars] = useOutletContext();
 
   const handleSubmit = async (selectedValue) => {
     // POST the position and the name of the selectedCharacter(selectedValue)
