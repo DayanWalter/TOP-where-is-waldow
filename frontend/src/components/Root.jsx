@@ -40,6 +40,14 @@ export default function Root() {
     }
   }, [foundChars.rick, foundChars.girl, foundChars.morty]);
 
+  // useEffect(() => {
+  //   const elapsedTime = time.end - time.start;
+
+  //   setTime({
+  //     ...time,
+  //     elapsed: elapsedTime,
+  //   });
+  // }, [time.end]);
   console.log(time);
   return (
     <div className={styles.site}>

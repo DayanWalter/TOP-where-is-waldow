@@ -10,6 +10,7 @@ export default function Picture() {
   useEffect(() => {
     setTime({
       ...time,
+      end: null,
       start: Date.now(),
     });
     // const fetchTime = async () => {
