@@ -22,6 +22,14 @@ exports.char_post = asyncHandler(async (req, res, next) => {
   }
 });
 exports.time_post = asyncHandler(async (req, res, next) => {
-  console.log(req.body.time);
-  res.json({ timer: req.body.time });
+  console.log(req.body);
+  const startTime = req.body.start;
+  const endTime = req.body.end;
+  const elapsedTime = endTime - startTime;
+  res.json({
+    start: req.body.start,
+    end: req.body.end,
+    user: req.body.user,
+    elapsed: elapsedTime,
+  });
 });

@@ -10,6 +10,6 @@ router.get('/chars/:id', controller.char_get);
 
 router.post('/chars/:id', controller.char_post);
 
-router.post('/picture', controller.time_post);
+router.post('/leaderboard', controller.time_post);
 
 module.exports = router;

@@ -45,16 +45,61 @@ export default function Popup({ popupCoords, coords }) {
           [json.char.name]: true,
         });
       }
-      // DIsplay the found chars
-      console.log(foundChars);
     } catch (error) {
       console.error('Error', error);
     }
   };
+  // Display the found chars
+  console.log(foundChars);
 
   const popupPosition = {
     left: popupCoords.x,
     top: popupCoords.y,
+  };
+
+  const handleAddName = (e) => {
+    const newTime = {
+      ...time,
+      user: e.target.value,
+    };
+    setTime(newTime);
+  };
+
+  console.log(time);
+
+  const handleUserSubmit = async () => {
+    // POST the position and the name of the selectedCharacter(selectedValue)
+    try {
+      const response = await fetch(`http://localhost:3000/leaderboard`, {
+        method: 'POST',
+        body: JSON.stringify({
+          start: time.start,
+          end: time.end,
+          user: time.user,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        console.error('Error:', response.statusText);
+      }
+      const json = await response.json();
+
+      console.log(json);
+      // If the response is a success
+      // if (json.message === 'Success') {
+      //   // Set the found char to true
+      //   setFoundChars({
+      //     // Keep the found chars
+      //     ...foundChars,
+      //     // Set the recently found char to true
+      //     [json.char.name]: true,
+      //   });
+      // }
+    } catch (error) {
+      console.error('Error', error);
+    }
   };
 
   return (
@@ -62,64 +107,90 @@ export default function Popup({ popupCoords, coords }) {
       <div className={styles.outerbox}>
         <div className={styles.innerbox}>
           <div className={styles.innerboxcontent}>
-            <form id="characterForm" onSubmit={handleSubmit}>
-              <ul>
-                <li className={styles.listitem}>
-                  <button
-                    type="submit"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleSubmit('rick');
-                    }}
-                  >
-                    {/* Change the colour of the picture */}
-                    {!foundChars.rick ? (
-                      <img className={styles.chars} src={rick} alt="rick" />
-                    ) : (
-                      <img className={styles.chars} src={rickdone} alt="rick" />
-                    )}
-                  </button>
-                </li>
+            {/* Characterform */}
 
-                <li className={styles.listitem}>
-                  <button
-                    type="submit"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleSubmit('morty');
-                    }}
-                  >
-                    {/* Change the colour of the picture */}
-                    {!foundChars.morty ? (
-                      <img className={styles.chars} src={morty} alt="morty" />
-                    ) : (
-                      <img
-                        className={styles.chars}
-                        src={mortydone}
-                        alt="morty"
-                      />
-                    )}
-                  </button>
-                </li>
+            {!foundChars.rick || !foundChars.girl || !foundChars.morty ? (
+              <form id="characterForm" onSubmit={handleSubmit}>
+                <ul>
+                  <li className={styles.listitem}>
+                    <button
+                      type="submit"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleSubmit('rick');
+                      }}
+                    >
+                      {/* Change the colour of the picture */}
+                      {!foundChars.rick ? (
+                        <img className={styles.chars} src={rick} alt="rick" />
+                      ) : (
+                        <img
+                          className={styles.chars}
+                          src={rickdone}
+                          alt="rick"
+                        />
+                      )}
+                    </button>
+                  </li>
 
-                <li className={styles.listitem}>
-                  <button
-                    type="submit"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleSubmit('girl');
-                    }}
-                  >
-                    {/* Change the colour of the picture */}
-                    {!foundChars.girl ? (
-                      <img className={styles.chars} src={girl} alt="girl" />
-                    ) : (
-                      <img className={styles.chars} src={girldone} alt="girl" />
-                    )}
-                  </button>
-                </li>
-              </ul>
-            </form>
+                  <li className={styles.listitem}>
+                    <button
+                      type="submit"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleSubmit('morty');
+                      }}
+                    >
+                      {/* Change the colour of the picture */}
+                      {!foundChars.morty ? (
+                        <img className={styles.chars} src={morty} alt="morty" />
+                      ) : (
+                        <img
+                          className={styles.chars}
+                          src={mortydone}
+                          alt="morty"
+                        />
+                      )}
+                    </button>
+                  </li>
+
+                  <li className={styles.listitem}>
+                    <button
+                      type="submit"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleSubmit('girl');
+                      }}
+                    >
+                      {/* Change the colour of the picture */}
+                      {!foundChars.girl ? (
+                        <img className={styles.chars} src={girl} alt="girl" />
+                      ) : (
+                        <img
+                          className={styles.chars}
+                          src={girldone}
+                          alt="girl"
+                        />
+                      )}
+                    </button>
+                  </li>
+                </ul>
+              </form>
+            ) : (
+              <form>
+                <label htmlFor="name">Enter Name:</label>
+                <input type="text" id="name" onChange={handleAddName} />
+                <button
+                  type="submit"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleUserSubmit();
+                  }}
+                >
+                  Submit
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

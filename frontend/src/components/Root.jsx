@@ -32,11 +32,12 @@ export default function Root() {
       foundChars.morty === true
     ) {
       console.log('All done! STOP TIME');
-
       setTime({
         ...time,
         end: Date.now(),
       });
+      // Ask for name input
+      // Send to server
     }
   }, [foundChars.rick, foundChars.girl, foundChars.morty]);
 
