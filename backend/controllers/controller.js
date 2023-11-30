@@ -1,4 +1,6 @@
 const Char = require('../models/chars');
+const User = require('../models/user');
+
 const asyncHandler = require('express-async-handler');
 
 exports.char_get = asyncHandler(async (req, res, next) => {
@@ -22,10 +24,18 @@ exports.char_post = asyncHandler(async (req, res, next) => {
   }
 });
 exports.time_post = asyncHandler(async (req, res, next) => {
-  console.log(req.body);
   const startTime = req.body.start;
   const endTime = req.body.end;
   const elapsedTime = endTime - startTime;
+
+  const user = new User({
+    start: req.body.start,
+    end: req.body.end,
+    user: req.body.user,
+    elapsed: elapsedTime,
+  });
+  await user.save();
+
   res.json({
     start: req.body.start,
     end: req.body.end,
