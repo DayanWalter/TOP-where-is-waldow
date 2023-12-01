@@ -36,20 +36,9 @@ export default function Root() {
         ...time,
         end: Date.now(),
       });
-      // Ask for name input
-      // Send to server
     }
   }, [foundChars.rick, foundChars.girl, foundChars.morty]);
 
-  // useEffect(() => {
-  //   const elapsedTime = time.end - time.start;
-
-  //   setTime({
-  //     ...time,
-  //     elapsed: elapsedTime,
-  //   });
-  // }, [time.end]);
-  console.log(time);
   return (
     <div className={styles.site}>
       <header className={styles.header}>

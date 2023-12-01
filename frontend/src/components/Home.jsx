@@ -1,7 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import styles from './Home.module.css';
+import { useEffect } from 'react';
 
 export default function Home() {
+  const [foundChars, setFoundChars, time, setTime] = useOutletContext();
+
+  useEffect(() => {
+    setFoundChars({ rick: null, morty: null, girl: null });
+  }, []);
   return (
     <div className={styles.container}>
       <div className={styles.outerbox}>

@@ -7,9 +7,10 @@ import mortydone from '../assets/morty.png';
 import girldone from '../assets/littlegirl.png';
 
 import styles from './Popup.module.css';
-import { useOutletContext } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 
 export default function Popup({ popupCoords, coords }) {
+  const navigate = useNavigate();
   // State from root
   const [foundChars, setFoundChars, time, setTime] = useOutletContext();
   const handleSubmit = async (selectedValue) => {
@@ -85,23 +86,6 @@ export default function Popup({ popupCoords, coords }) {
         console.error('Error:', response.statusText);
       }
       const json = await response.json();
-
-      console.log(json);
-      const timeInSeconds = new Date(json.elapsed);
-
-      console.log(
-        `${timeInSeconds.getSeconds()},${timeInSeconds.getMilliseconds()}`
-      );
-      // If the response is a success
-      // if (json.message === 'Success') {
-      //   // Set the found char to true
-      //   setFoundChars({
-      //     // Keep the found chars
-      //     ...foundChars,
-      //     // Set the recently found char to true
-      //     [json.char.name]: true,
-      //   });
-      // }
     } catch (error) {
       console.error('Error', error);
     }
@@ -112,9 +96,9 @@ export default function Popup({ popupCoords, coords }) {
       <div className={styles.outerbox}>
         <div className={styles.innerbox}>
           <div className={styles.innerboxcontent}>
-            {/* Characterform */}
-
+            {/* If rick OR morty OR the girl ist NOT found, display character form */}
             {!foundChars.rick || !foundChars.girl || !foundChars.morty ? (
+              // Character form
               <form id="characterForm" onSubmit={handleSubmit}>
                 <ul>
                   <li className={styles.listitem}>
@@ -182,6 +166,7 @@ export default function Popup({ popupCoords, coords }) {
                 </ul>
               </form>
             ) : (
+              // Enter name form
               <form>
                 <label htmlFor="name">Enter Name:</label>
                 <input type="text" id="name" onChange={handleAddName} />
@@ -189,7 +174,12 @@ export default function Popup({ popupCoords, coords }) {
                   type="submit"
                   onClick={(e) => {
                     e.preventDefault();
+                    // Save user to db
                     handleUserSubmit();
+                    // wait 500ms, before moving to leaderboard
+                    setTimeout(() => {
+                      navigate('/leaderboard');
+                    }, 500);
                   }}
                 >
                   Submit

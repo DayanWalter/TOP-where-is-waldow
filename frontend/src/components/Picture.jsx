@@ -13,28 +13,6 @@ export default function Picture() {
       end: null,
       start: Date.now(),
     });
-    // const fetchTime = async () => {
-    //   try {
-    //     const response = await fetch(`http://localhost:3000/picture`, {
-    //       method: 'POST',
-    //       body: JSON.stringify({
-    //         time: Date.now(),
-    //       }),
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //     });
-    //     if (!response.ok) {
-    //       console.error('Error:', response.statusText);
-    //     }
-    //     const json = await response.json();
-    //     console.log(json);
-    //   } catch (error) {
-    //     console.error('Error', error);
-    //   }
-    //   console.log('fetchTime executed');
-    // };
-    // fetchTime();
   }, []);
 
   const [coords, setCoords] = useState({ x: null, y: null });
