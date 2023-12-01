@@ -30,31 +30,34 @@ export default function Leaderboard() {
   }, []);
 
   return (
-    <>
-      {loading && <div>A moment please...</div>}
-      {error && <div>{`There is a problem fetching the data - ${error}`}</div>}
-      {user && (
-        <>
-          <div className={styles.container}>
-            <div className={styles.outerbox}>
-              <div className={styles.innerbox}>
-                <div className={styles.innerboxcontent}>
-                  <h1>Leaderboard</h1>
-                  <p>These are our best of the best:</p>
-                  <ol>
-                    {user.map(({ _id, user, elapsed }) => (
-                      <li key={_id}>
-                        {/* Map through every entry: Insert component */}
-                        {user} in {elapsed} seconds
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </div>
-            </div>
+    <div className={styles.container}>
+      <div className={styles.outerbox}>
+        <div className={styles.innerbox}>
+          <div className={styles.innerboxcontent}>
+            <h1>Leaderboard</h1>
+            <p>These are our best of the best:</p>
+
+            {loading && <div>A moment please...</div>}
+            {error && (
+              <div>{`There is a problem fetching the data - ${error}`}</div>
+            )}
+            {user && (
+              <ol>
+                {user.map(({ _id, user, elapsed }) => (
+                  <li key={_id}>
+                    {/* Map through every entry: Insert component */}
+                    {user} in{' '}
+                    {`${new Date(elapsed).getSeconds()},${new Date(
+                      elapsed
+                    ).getMilliseconds()}`}{' '}
+                    seconds
+                  </li>
+                ))}
+              </ol>
+            )}
           </div>
-        </>
-      )}
-    </>
+        </div>
+      </div>
+    </div>
   );
 }
