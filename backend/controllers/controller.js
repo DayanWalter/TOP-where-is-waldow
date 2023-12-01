@@ -29,7 +29,7 @@ exports.user_get = asyncHandler(async (req, res, next) => {
   res.json(allUser);
 });
 
-exports.time_post = asyncHandler(async (req, res, next) => {
+exports.user_post = asyncHandler(async (req, res, next) => {
   const startTime = req.body.start;
   const endTime = req.body.end;
   const elapsedTime = endTime - startTime;

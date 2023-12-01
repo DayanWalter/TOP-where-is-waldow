@@ -12,6 +12,6 @@ router.post('/chars/:id', controller.char_post);
 
 router.get('/leaderboard', controller.user_get);
 
-router.post('/leaderboard', controller.time_post);
+router.post('/leaderboard', controller.user_post);
 
 module.exports = router;
