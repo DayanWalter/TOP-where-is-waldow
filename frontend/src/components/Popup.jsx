@@ -87,6 +87,11 @@ export default function Popup({ popupCoords, coords }) {
       const json = await response.json();
 
       console.log(json);
+      const timeInSeconds = new Date(json.elapsed);
+
+      console.log(
+        `${timeInSeconds.getSeconds()},${timeInSeconds.getMilliseconds()}`
+      );
       // If the response is a success
       // if (json.message === 'Success') {
       //   // Set the found char to true

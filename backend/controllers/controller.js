@@ -23,6 +23,12 @@ exports.char_post = asyncHandler(async (req, res, next) => {
     res.json({ message: 'failure' });
   }
 });
+
+exports.user_get = asyncHandler(async (req, res, next) => {
+  const allUser = await User.find().exec();
+  res.json(allUser);
+});
+
 exports.time_post = asyncHandler(async (req, res, next) => {
   const startTime = req.body.start;
   const endTime = req.body.end;
