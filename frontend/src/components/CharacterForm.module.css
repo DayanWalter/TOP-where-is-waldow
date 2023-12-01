@@ -1,0 +1,10 @@
+.chars {
+  border-radius: 50%;
+}
+.listitem {
+  list-style-type: none;
+  cursor: pointer;
+}
+.listitem:nth-child(2) {
+  margin: 15px 0px;
+}
