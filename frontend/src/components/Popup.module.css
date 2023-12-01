@@ -48,6 +48,7 @@
 .innerboxcontent button:hover {
   background-color: black;
   /* transform: scale(5); */
+  color: white;
   transform: scale(1.2);
 }
 .chars {

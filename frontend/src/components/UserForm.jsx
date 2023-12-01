@@ -1,4 +1,4 @@
-import styles from './CharacterForm.module.css';
+import styles from './UserForm.module.css';
 
 import { useNavigate, useOutletContext } from 'react-router-dom';
 
@@ -40,9 +40,14 @@ export default function UserForm() {
     }, 500);
   };
   return (
-    <form>
-      <label htmlFor="name">Enter Name:</label>
-      <input type="text" id="name" onChange={handleAddName} />
+    <form className={styles.form}>
+      <label htmlFor="name">Enter Your Name:</label>
+      <input
+        type="text"
+        id="name"
+        onChange={handleAddName}
+        className={styles.input}
+      />
       <button type="submit" onClick={handleSubmit}>
         Submit
       </button>
